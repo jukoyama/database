@@ -1,0 +1,31 @@
+<?php 
+require('dbconnect.php');
+$recordset = mysql_query('select * from shop_item order by id asc'); 
+?>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+<table width="80%" border="1"> 
+ <tr> 
+  <th scope="col">ID</th> 
+  <th scope="col">メーカー</th> 
+  <th scope="col">商品名</th> 
+  <th scope="col">価格</th> 
+ </tr> 
+ <?php 
+ while($table = mysql_fetch_assoc($recordset)) { 
+ ?> 
+ <tr> 
+  <td><?php print(htmlspecialchars($table['id'])); ?> </td> 
+  <td><?php print(htmlspecialchars($table['maker'])); ?> </td> 
+  <td><?php print(htmlspecialchars($table['item_name'])); ?> </td> 
+  <td><?php print(htmlspecialchars($table['price'])); ?> </td> 
+ </tr> 
+ <?php 
+ } 
+ ?> 
+ </table> 
+</body> 
+</html>
